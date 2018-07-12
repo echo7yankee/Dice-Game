@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    font-weight: 400;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.main {
+    background-image: url('../img/background.jpeg');
+    min-height: 100vh;
+    width: 100%;
+    background-position: bottom;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 45%;
+    min-height: 50vh;
+    background-color: rgba(247, 247, 247, .92);
+    border-radius: .2rem;
+    display: flex;
+}
+
+.player-container {
+    width: 33.3333%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+.player {
+    color: #333;
+    font-size: 4.5rem;
+    font-weight: 300;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.main-score {
+    color: #a4031f;
+    font-size: 5.5rem;
+    flex: 0 0 60%;
+}
+
+.current-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(228, 74, 74);
+    width: 12rem;
+    height: 7rem;
+    border-radius: .2rem;
+    text-align: center;
+}
+
+.paragraph-current {
+    color: #fff;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+}
+
+.paragraph-score {
+    color: #fff;
+    font-size: 1.8rem;
+}
+
+.dice-controls {
+    width: 33.3333%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem;
+}
+
+.dice {
+    flex: 0 0 60%;
+}
+
+.buttons {
+    width: 15rem;
+    height: 4.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;   
+}
+
+
+.dice-icons {
+    font-size: 2.2rem;
+}
+
+.btn {
+    border: none;
+    background-color: transparent;
+    font-size: 1.8rem;
+    color: #333;
+    margin-left: 1.5rem;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+.active-btn .btn {
+    margin-left: 3rem;
+    font-weight: bold;
+}
