@@ -23,7 +23,7 @@ html {
 }
 
 .container {
-    width: 45%;
+    width: 55%;
     min-height: 50vh;
     background-color: rgba(247, 247, 247, .92);
     border-radius: .2rem;
@@ -45,12 +45,13 @@ html {
     font-weight: 300;
     text-align: center;
     text-transform: uppercase;
+    position: relative;
 }
 
 .main-score {
     color: #a4031f;
     font-size: 5.5rem;
-    flex: 0 0 60%;
+    flex: 0 0 40%;
 }
 
 .current-score {
@@ -72,7 +73,7 @@ html {
     letter-spacing: .1rem;
 }
 
-.paragraph-score {
+.current-score {
     color: #fff;
     font-size: 1.8rem;
 }
@@ -91,31 +92,61 @@ html {
 }
 
 .buttons {
-    width: 15rem;
+    width: 20rem;
     height: 4.5rem;
     margin-bottom: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;   
 }
 
 
 .dice-icons {
     font-size: 2.2rem;
+    color: #a4031f;
+    margin-right: 1.5rem;
+    transition: all .2s linear;
 }
 
 .btn {
     border: none;
     background-color: transparent;
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #333;
     margin-left: 1.5rem;
     cursor: pointer;
-    transition: all .2s linear;
+    padding: 1rem 1rem;
+    outline: none;
+    
 }
 
-.active-btn .btn {
-    margin-left: 3rem;
-    font-weight: bold;
+/* actives js */
+
+.winner {
+    background-color: #fff;
+}
+
+.winner .player-one::after {
+    content: "\2022";
+    font-size: 50px;
+    position: absolute;
+    color: #a4031f;
+    right: -4rem;
+    top: 0rem;
+}
+.winner .player-two::after {
+    content: "\2022";
+    font-size: 50px;
+    position: absolute;
+    color: #a4031f;
+    right: -4rem;
+    top: 0rem;
+}
+
+.active-dice-icons .dice-icons {
+    margin-right: 2.5rem;
+}
+
+.dice.active-dice {
+    opacity: 0;
 }
