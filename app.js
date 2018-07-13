@@ -60,10 +60,10 @@
     holdBtn_btn.addEventListener('click', () => {
         scores[activePlayer] += roundScore;
         document.getElementById('main-score-' + activePlayer).textContent = scores[activePlayer];
-        if(scores[activePlayer] >= 20) {
+        if(scores[activePlayer] >= 100) {
             winnerPanel_div.classList.add('active-winner');
             overlay_div.classList.add('active-overlay');
-            winPlayer_span.textContent = 'Player ' + activePlayer;
+            winPlayer_span.textContent = 'Player ' + parseInt(activePlayer + 1);
         }
         changePlayer();
 
