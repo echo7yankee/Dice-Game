@@ -16,7 +16,7 @@
     <div class="main">
         <div class="container">
 
-            <div class="player-container game-player-0 winner">
+            <div class="player-container game-player-0 active">
                 <h1 class="player player-one">Player 1 </h1>
                 <p class="main-score" id="main-score-0">43</p>
                 <div class="current-score">
@@ -48,8 +48,26 @@
                     <p class="paragraph-score" id="current-score-1">2</p>
                 </div>
             </div>
-
         </div>
+
+        <!-- Winner -->
+        <div class="winner">
+            <div class="winner-header">Congratulations. <span id="win-player"></span> has Won</div>
+            <button class="winner-btn">Play again</button>
+            
+            <div class="close-btn">
+                <div class="close-line"></div>
+            </div>
+        </div>
+
+        
+        <!-- Winner -->
+
+        <!-- Overlay -->
+        <div class="overlay">
+        </div>
+        <!-- Overlay -->
+      
 
         <script src="./app.js"></script>
 </body>

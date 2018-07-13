@@ -30,10 +30,15 @@
 
     const dice_div = document.querySelector('.dice');
     const dice_img = document.querySelector('.dice-img');
+
+    const winnerPanel_div = document.querySelector('.winner');
+    const overlay_div = document.querySelector('.overlay');
+    const closeBtn_btn = document.querySelector('.close-btn');
+    const playAgainBtn_btn = document.querySelector('.winner-btn');
+
+    let winPlayer_span = document.getElementById('win-player');
     
-    let roundScore = 0;
-    let activePlayer = 0;
-    let scores = [0, 0];
+    let roundScore, activePlayer, scores
 
     reset();
 
@@ -55,8 +60,10 @@
     holdBtn_btn.addEventListener('click', () => {
         scores[activePlayer] += roundScore;
         document.getElementById('main-score-' + activePlayer).textContent = scores[activePlayer];
-        if(scores[activePlayer] >= 100) {
-            alert('winner');
+        if(scores[activePlayer] >= 20) {
+            winnerPanel_div.classList.add('active-winner');
+            overlay_div.classList.add('active-overlay');
+            winPlayer_span.textContent = 'Player ' + activePlayer;
         }
         changePlayer();
 
@@ -73,16 +80,40 @@
         document.getElementById('current-score-0').textContent = '0';
         document.getElementById('current-score-1').textContent = '0';
         dice_div.classList.add('active-dice');
-        gamePlayerOne.classList.toggle('winner');
-        gamePlayerTwo.classList.toggle('winner');
+        gamePlayerOne.classList.toggle('active');
+        gamePlayerTwo.classList.toggle('active');
     }
 
+    newGame_btn.addEventListener('click', reset);
+    playAgainBtn_btn.addEventListener('click', () => {
+        winnerPanel_div.classList.remove('active-winner');
+        overlay_div.classList.remove('active-overlay');
+        reset();
+    });
+
     function reset() {
+
+        roundScore = 0;
+        activePlayer = 0;
+        scores = [0, 0];
         document.getElementById('current-score-0').textContent = '0';
         document.getElementById('current-score-1').textContent = '0';
         document.getElementById('main-score-0').textContent = '0';
         document.getElementById('main-score-1').textContent = '0'
+        gamePlayerOne.classList.add('active');
+        gamePlayerTwo.classList.remove('active');
+        dice_div.classList.add('active-dice');
     }
+
+    closeBtn_btn.addEventListener('click', () => {
+        winnerPanel_div.classList.remove('active-winner');
+        overlay_div.classList.remove('active-overlay');
+    })
+
+    overlay_div.addEventListener('click', () => {
+        overlay_div.classList.remove('active-overlay');
+        winnerPanel_div.classList.remove('active-winner');
+    })
 
 
 }
