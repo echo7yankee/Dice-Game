@@ -31,7 +31,7 @@ html {
 }
 
 .player-container {
-    width: 33.3333%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;

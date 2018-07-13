@@ -1,59 +1,88 @@
 // This handles the buttons animations
 {
-const buttons_btn = document.querySelectorAll('.btn');
+    const buttons_btn = document.querySelectorAll('.btn');
 
-function handleEnter() {
-    this.classList.add('active-dice-icons');
-}
+    function handleEnter() {
+        this.classList.add('active-dice-icons');
+    }
 
-function handleLeave() {
-    this.classList.remove('active-dice-icons');
-}
+    function handleLeave() {
+        this.classList.remove('active-dice-icons');
+    }
 
-buttons_btn.forEach(button => {
-    button.addEventListener('mouseenter', handleEnter)
-});
-buttons_btn.forEach(button => {
-    button.addEventListener('mouseleave', handleLeave)
-});
+    buttons_btn.forEach(button => {
+        button.addEventListener('mouseenter', handleEnter)
+    });
+    buttons_btn.forEach(button => {
+        button.addEventListener('mouseleave', handleLeave)
+    });
 }
 
 
 // The game
 {
-    const gamePlayerOne = document.querySelector('.game-player-one');
-    const gamePlayerTwo = document.querySelector('.game-player-two');
+    const gamePlayerOne = document.querySelector('.game-player-0');
+    const gamePlayerTwo = document.querySelector('.game-player-1');
 
     const rollDice_btn = document.querySelector('.btn-roll');
+    const newGame_btn = document.querySelector('.btn-new');
+    const holdBtn_btn = document.querySelector('.btn-hold');
+
     const dice_div = document.querySelector('.dice');
     const dice_img = document.querySelector('.dice-img');
+    
+    let roundScore = 0;
+    let activePlayer = 0;
+    let scores = [0, 0];
 
-    const mainScoreOne_p = document.getElementById('main-score-one');
-    const mainScoreTwo_p = document.getElementById('main-score-two');
-    const currentScoreOne_p = document.getElementById('current-score-one');
-    const currentScoreTwo_p = document.getElementById('current-score-two');
-
-    mainScoreOne_p.textContent = 0;
-    mainScoreTwo_p.textContent = 0;
-    currentScoreOne_p.textContent = 0;
-    currentScoreTwo_p.textContent = 0;
-    let playerScore = 0;
-
-    dice_div.classList.add('active-dice');
+    reset();
 
     rollDice_btn.addEventListener('click', () => {
         diceRandom = Math.floor(Math.random() * 6) + 1;
         dice_div.classList.remove('active-dice');
         dice_img.src = './img/img-' + diceRandom + '.png';
 
-        if(diceRandom === 1) {
-            gamePlayerOne.classList.toggle('winner');
-            gamePlayerTwo.classList.toggle('winner');
+        if (diceRandom !== 1) {
+            roundScore += diceRandom;
+            document.getElementById('current-score-' + activePlayer).textContent = roundScore;
+        } else {
+         changePlayer();
         }
-  
+
 
     });
 
+    holdBtn_btn.addEventListener('click', () => {
+        scores[activePlayer] += roundScore;
+        document.getElementById('main-score-' + activePlayer).textContent = scores[activePlayer];
+        if(scores[activePlayer] >= 100) {
+            alert('winner');
+        }
+        changePlayer();
+
+    });
+
+    function changePlayer() {
+        if(activePlayer === 0) {
+            activePlayer = 1;
+        } else {
+            activePlayer = 0;
+        }
+        roundScore = 0;
+
+        document.getElementById('current-score-0').textContent = '0';
+        document.getElementById('current-score-1').textContent = '0';
+        dice_div.classList.add('active-dice');
+        gamePlayerOne.classList.toggle('winner');
+        gamePlayerTwo.classList.toggle('winner');
+    }
+
+    function reset() {
+        document.getElementById('current-score-0').textContent = '0';
+        document.getElementById('current-score-1').textContent = '0';
+        document.getElementById('main-score-0').textContent = '0';
+        document.getElementById('main-score-1').textContent = '0'
+    }
 
 
 }
